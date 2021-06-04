@@ -14,7 +14,7 @@ cache:
 
 before_install:
   - chmod +x gradlew
-  -
+
 script: "./gradlew clean build"
 
 before_deploy:
@@ -24,16 +24,15 @@ before_deploy:
 
 deploy:
   - provider: s3
-    access_key_id: $AWS_ACCESS_KEY ## Travis CI 환경변수
-    secret_access_key: $AWS_SECRET_KEY ## Travis CI 환경변수
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
 
-    bucket: swchoi-springboot-build-aaxx98 ## S3버킷
+    bucket: freelec-springboot-build-aaxx98
     region: ap-northeast-2
     skip_cleanup: true
-    acl: private # zip 파일 접근을 private으로
-    local_dir: deploy # before_deploy에서 생성한 디렉토리
-    wait_until_deployed: true
-
+    acl: private
+    local_dir: deploy
+    wait_until_deployed : true
 
 # CI 실행 완료 시 메일로 알람
 notifications:
